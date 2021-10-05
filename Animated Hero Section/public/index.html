@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <title>CodeF</title>
+        <link rel="stylesheet"
+              href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-dark.min.css">
+        <link rel="stylesheet"
+              href="./style.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    </head>
+
+    <body
+          class="w-full h-screen bg-gradient-to-r from-blue-800 to-blue-400 flex flex-col-reverse md:flex-row justify-center items-center overflow-hidden">
+
+        <!-- Left -->
+        <div
+             class="relative w-full md:w-1/2 mt-20 md:mt-0 flex justify-center items-center transform scale-75 md:scale-100">
+            <!-- Front -->
+            <div class="relative z-10 bg-gray-800 rounded-lg w-terminal custom-shadow">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2 p-3">
+                        <div class="bg-red-500 rounded-full w-3 h-3"></div>
+                        <div class="bg-yellow-500 rounded-full w-3 h-3"></div>
+                        <div class="bg-green-500 rounded-full w-3 h-3"></div>
+                    </div>
+                    <h1 class="text-blue-500">tailwind.config.js</h1>
+                </div>
+                <pre class="p-0 h-96 overflow-hidden rounded-lg">
+                    <code class="bg-gray-800 p-0 text-sm">
+  module.expots ={
+      theme:{
+          extend:{
+              keyframes:{
+                  'spin-slow':{
+                      '0%':{ transform: 'rotate(0deg)'},
+                      '100%':{ transform: 'rotate(360deg)'},
+                  }
+              },
+              animation:{
+                  'spin-slow':'spin-slow 13s linear infinite'
+              }
+          }
+      }
+  }
+                    </code>
+                </pre>
+            </div>
+
+            <!-- Back -->
+            <div
+                 class="absolute z-0 bg-gray-800 rounded-lg w-terminal h-96 transform rotate-6 translate-x-6 -translate-y-8 opacity-75">
+                <div class="flex items-center space-x-2 p-3">
+                    <div class="bg-red-500 rounded-full w-3 h-3"></div>
+                    <div class="bg-yellow-500 rounded-full w-3 h-3"></div>
+                    <div class="bg-green-500 rounded-full w-3 h-3"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right -->
+        <div
+             class="w-full md:w-1/2 flex justify-center items-center transform scale-75 md:scale-125 translate-x-20 md:translate-x-40 translate-y-0 md:-translate-y-20">
+            <img class="w-80 h-80 rounded-full border-4 border-white custom-shadow"
+                 src="./assets/pexels-michael-block-3225517.jpg"
+                 alt="">
+
+            <!-- Inner -->
+            <div
+                 class="hw-inner flex justify-between items-center absolute border border-gray-800 rounded-full animate-spin-slow anim-8s">
+                <div class="bg-white p-1 rounded-full custom-shadow h-10 w-10  transform -translate-x-5 ">
+                    <img class="h-9 w-9 object-center animate-rotate-img anim-8s"
+                         src="./assets/alpine.png"
+                         alt="">
+
+                </div>
+                <div class="bg-white overflow-hidden rounded-full custom-shadow h-10 w-10 transform translate-x-5 ">
+                    <img class="h-10 w-10 object-center animate-rotate-img anim-8s"
+                         src="./assets/javascript.png"
+                         alt="">
+                </div>
+            </div>
+
+            <!-- Outer -->
+            <div
+                 class="hw-outer flex justify-between items-center absolute border border-gray-800 rounded-full animate-spin-slow ">
+
+
+                <div class="flex justify-between items-center h-full w-full">
+                    <div
+                         class="bg-white p-1 rounded-full custom-shadow h-10 w-10  transform translate-x-8 translate-y-40 ">
+                        <img class="h-full w-full object-center animate-rotate-img "
+                             src="./assets/flutter.png"
+                             alt="">
+
+                    </div>
+                    <div
+                         class="bg-white overflow-hidden p-1 rounded-full custom-shadow h-10 w-10 transform -translate-x-8 -translate-y-40 ">
+                        <img class="h-full w-full object-center animate-rotate-img"
+                             src="./assets/svelte.png"
+                             alt="">
+                    </div>
+                </div>
+
+
+                <div class="absolute flex justify-between items-center h-full w-full">
+                    <div
+                         class="bg-white p-1 rounded-full custom-shadow h-10 w-10  transform translate-x-8 -translate-y-40">
+                        <img class="h-full w-full object-center animate-rotate-img "
+                             src="./assets/tailwindcss.png"
+                             alt="">
+
+                    </div>
+                    <div
+                         class="bg-white overflow-hidden p-1 rounded-full custom-shadow h-10 w-10 transform -translate-x-8 translate-y-40 ">
+                        <img class="h-full w-full object-center animate-rotate-img "
+                             src="./assets/vuejs.png"
+                             alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <script>hljs.highlightAll();</script>
+    </body>
+
+</html>
+
+<!-- ##_ Install Tailwindcss _## -->
+<!-- npm i tailwindcss -->
+
+<!-- ##_ Create your configuration file _## -->
+<!-- npx tailwindcss init-->
+
+<!-- ##_ This will generate style.css with the default Tailwind configuration _## -->
+<!-- npx tailwindcss -o style.css-->
+
+<!-- ##_ This will compile your custom css into style.css and watch for any changes _## -->
+<!-- npx tailwindcss -i ./app.css -o ./public/style.css  -w-->
