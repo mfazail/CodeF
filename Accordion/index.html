@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeF</title>
+
+    <!-- Tailwind css -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Alpinejs -->
+    <script defer src="https://unpkg.com/alpinejs@3.3.2/dist/cdn.min.js"></script>
+</head>
+
+<body class="w-full bg-gray-200 flex justify-center items-center h-screen px-4">
+
+    <div x-data="accordion" class="w-full max-w-lg mx-auto space-y-4">
+        <!-- Accordion 1 -->
+        <div class="w-full bg-white shadow-md rounded-md">
+            <!-- Head -->
+            <div @click="selected != 1 ? selected = 1 : selected =null"
+                class="flex justify-between items-center shadow-md px-2">
+                <h1 class="font-medium text-gray-800 py-2">Accordion 1</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:class="selected == 1? 'transform rotate-180':''"
+                    class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+            <!-- Content -->
+            <div class="max-h-0 overflow-hidden transition-all duration-300" x-ref="tab1"
+                :style="selected == 1 ? 'max-height: '+ $refs.tab1.scrollHeight+ 'px;':''">
+                <p class="p-2 text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, neque ipsam
+                    ullam ad illo
+                    vero
+                    repellendus cumque exercitationem aperiam fugit totam tempora facere repudiandae nemo modi quod
+                    perferendis odio minus.</p>
+            </div>
+        </div>
+        <!-- Accordion 2 -->
+        <div class="w-full bg-white shadow-md rounded-md">
+            <!-- Head -->
+            <div @click="selected != 2 ? selected = 2 : selected =null"
+                class="flex justify-between items-center shadow-md px-2">
+                <h1 class="font-medium text-gray-800 py-2">Accordion 1</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:class="selected == 2? 'transform rotate-180':''"
+                    class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+            <!-- Content -->
+            <div class="max-h-0 overflow-hidden transition-all duration-300" x-ref="tab2"
+                :style="selected == 2 ? 'max-height: '+ $refs.tab2.scrollHeight+ 'px;':''">
+                <p class="p-2 text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, neque ipsam
+                    ullam ad illo
+                    vero
+                    repellendus cumque exercitationem aperiam fugit totam tempora facere repudiandae nemo modi quod
+                    perferendis odio minus.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function accordion() {
+            return {
+                selected: null
+            }
+        }
+    </script>
+
+</body>
+
+</html>
