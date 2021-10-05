@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeF</title>
+
+    <!-- Tailwind Css -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Alpine Js -->
+    <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+
+</head>
+<style>
+    [x-cloak] {
+        display: none;
+    }
+</style>
+
+<body class="min-h-screen relative overflow-x-hidden">
+    <nav x-data="nav" class="w-full top-0 fixed shadow-md bg-white">
+        <div class="max-w-7xl mx-auto flex justify-between px-4 relative">
+            <!-- Logo -->
+            <a href="#">
+                <h1 class="text-2xl font-black h-full leading-loose">LOGO</h1>
+            </a>
+            <!-- SearchBar -->
+            <div x-cloak x-show="searchBar" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 transform -translate-y-5"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform translate-y-0"
+                x-transition:leave-end="opacity-0 transform -translate-y-5"
+                class="bg-white absolute top-0 right-0 w-full flex justify-center items-center space-x-2 px-2 h-12 sm:w-80 sm:top-14 sm:border-2 sm:border-indigo-400 sm:rounded sm:shadow-md">
+                <input type="text" placeholder=" Search" x-ref="search"
+                    class="w-full appearance-none border-none bg-transparent py-2 px-3 texy-gray-700 leading-tight focus:outline-none">
+                <button @click="searchBar = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile -->
+            <div class="sm:hidden flex justify-center items-center">
+                <!-- Search Icon -->
+                <button @click="searchBar = true; $nextTick(() => $refs.search.focus());">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <!-- Menu Icons -->
+                <button class="py-3 ml-3" @click="navOpen=!navOpen">
+                    <svg :class="navOpen?'hidden':''" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg x-cloak :class="navOpen?'':'hidden'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Drawer -->
+            <div x-cloak x-show="navOpen" @click.outside="navOpen = false"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform -translate-x-5"
+                x-transition:enter-end="opacity-100 transform translate-x-0"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform translate-x-0"
+                x-transition:leave-end="opacity-0 transform -translate-x-5"
+                class="sm:hidden fixed h-screen top-0 left-0 bottom-0 w-72 bg-white shadow-md">
+                <div class="h-full flex justify-center items-center space-y-5 flex-col">
+                    <a href="#" @click="active = 'home'; navOpen = false">
+                        <h1 class="p-3 hover:text-indigo-400 transition duration-200"
+                            :class="active == 'home'?'border-b-2 border-indigo-400 text-indigo-400':''">Home</h1>
+                    </a>
+                    <!-- Dropdown -->
+                    <div x-data="dropdown" class="w-full relative">
+                        <div @click="open = !open; active='service'" class="group flex justify-center items-center">
+                            <button class="apperance-none focus:outline-none">
+                                <h1 class="p-3 group-hover:text-indigo-400 transition duration-200"
+                                    :class="active == 'service'?'text-indigo-400':''">
+                                    Service
+                                </h1>
+                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 mt-1 group-hover:text-indigo-400 transition-all duration-200 transform"
+                                :class="open ? 'rotate-180':''" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <!-- Dropdown Items -->
+                        <div x-show="open" class="flex flex-col justify-center items-center ml-4">
+                            <a href="#" @click="navOpen = false;open=false;">
+                                <h1 class="p-3 hover:text-indigo-400 transition duration-200">Item 1
+                                </h1>
+                            </a>
+                            <a href="#" @click="navOpen = false ;open=false;">
+                                <h1 class="p-3 hover:text-indigo-400 transition duration-200">Item 1
+                                </h1>
+                            </a>
+                            <a href="#" @click="navOpen = false;open=false;">
+                                <h1 class="p-3 hover:text-indigo-400 transition duration-200">Item 1
+                                </h1>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#" @click="active = 'profile'; navOpen = false">
+                        <h1 class="p-3 hover:text-indigo-400 transition duration-200"
+                            :class="active == 'profile'?'border-b-2 border-indigo-400 text-indigo-400':''">Profile
+                        </h1>
+                    </a>
+                    <a href="#" @click="active = 'contact'; navOpen = false">
+                        <h1 class="p-3 hover:text-indigo-400 transition duration-200"
+                            :class="active == 'contact'?'border-b-2 border-indigo-400 text-indigo-400':''">Contact
+                        </h1>
+                    </a>
+                </div>
+            </div>
+            <!-- Desktop -->
+            <div class="hidden sm:flex justify-evenly items-center space-x-4">
+                <a href="#" @click="active = 'home'">
+                    <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200"
+                        :class="active == 'home'?'border-b-2 border-indigo-400 text-indigo-400':''">Home</h1>
+                </a>
+                <!-- Dropdown -->
+                <div x-data="dropdown" class="relative flex justify-center items-center group">
+                    <button @click="open = !open;active = 'service';" @click.outside="open=false">
+                        <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200"
+                            :class="active == 'service'?'text-indigo-400':''">Service</h1>
+
+                    </button>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 mt-1 group-hover:text-indigo-400 transition-all duration-200 transform"
+                        :class="open ? 'rotate-180':''" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <div x-cloak x-show="open" class="absolute top-14 bg-white rounded-xl shadow-md border-2">
+                        <a href="#" @click="open = false">
+                            <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200">Item 1</h1>
+                        </a>
+                        <a href="#" @click="open = false">
+                            <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200">Item 2</h1>
+                        </a>
+                        <a href="#" @click="open = false">
+                            <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200">Item 3</h1>
+                        </a>
+                    </div>
+                </div>
+                <a href="#" @click="active = 'profile'">
+                    <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200"
+                        :class="active == 'profile'?'border-b-2 border-indigo-400 text-indigo-400':''">Profile</h1>
+                </a>
+                <a href="#" @click="active = 'contact'">
+                    <h1 class="p-3 font-medium hover:text-indigo-400 transition duration-200"
+                        :class="active == 'contact'?'border-b-2 border-indigo-400 text-indigo-400':''">Contact</h1>
+                </a>
+                <button @click="searchBar = true; $nextTick(() => $refs.search.focus());">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hover:text-indigo-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+    <script src="./main.js"></script>
+</body>
+
+</html>
