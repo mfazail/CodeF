@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeF</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.4.2/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <h1 class="text-3xl font-nunito py-5 text-center">Our Plans</h1>
+    <!-- Slider main container -->
+    <div x-data="swiper" class="swiper py-8 max-w-7xl mx-auto px-3">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="w-full shadow-lg rounded-lg bg-white hover:shadow-md pb-5">
+                    <h1 class="text-2xl text-center pt-10">Starter</h1>
+                    <h1 class="text-xl text-gray-600 text-center pt-5 animate-pulse"><span class="text-indigo-500">$
+                        </span><span class="text-indigo-500 text-5xl font-black">10</span> /month</h1>
+                    <ul x-data class="px-5 py-3 mt-5">
+                        <template x-for="i in 4" :key="i">
+                            <li class="flex space-x-3 items-center py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <h1>Lorem Ipsum</h1>
+                            </li>
+                        </template>
+                    </ul>
+                    <a href="#" class="w-full block px-4">
+                        <h1 class="text-center border border-indigo-500 rounded-md py-1 text-indigo-500 hover:text-white hover:bg-indigo-500 transition-colors duration-300">
+                            Get Started</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="relative w-full shadow-lg rounded-lg bg-white hover:shadow-md pb-5 border border-indigo-500">
+                    <div class="absolute -top-4 w-full flex justify-center items-center">
+                        <h1 class="text-white bg-indigo-500 rounded-full px-6 py-1">Best Selling</h1>
+                    </div>
+                    <h1 class="text-2xl text-center pt-10">Business</h1>
+                    <h1 class="text-xl text-gray-600 text-center pt-5 animate-pulse"><span class="text-indigo-500">$
+                        </span><span class="text-indigo-500 text-5xl font-black">35</span> /month</h1>
+                    <ul x-data class="px-5 py-3 mt-5">
+                        <template x-for="i in 6" :key="i">
+                            <li class="flex space-x-3 items-center py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <h1>Lorem Ipsum</h1>
+                            </li>
+                        </template>
+                    </ul>
+                    <a href="#" class="w-full block px-4">
+                        <h1 class="text-center border border-indigo-500 rounded-md py-1 text-white bg-indigo-500">
+                            Get Started</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="w-full shadow-lg rounded-lg bg-white hover:shadow-md pb-5">
+                    <h1 class="text-2xl text-center pt-10">Custom</h1>
+                    <h1 class="text-xl text-gray-600 text-center pt-5 animate-pulse"><span class="text-indigo-500">$
+                        </span><span class="text-indigo-500 text-5xl font-black">55</span> /month</h1>
+                    <ul x-data class="px-5 py-3 mt-5">
+                        <template x-for="i in 6" :key="i">
+                            <li class="flex space-x-3 items-center py-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <h1>Lorem Ipsum</h1>
+                            </li>
+                        </template>
+                    </ul>
+                    <a href="#" class="w-full block px-4">
+                        <h1 class="text-center border border-indigo-500 rounded-md py-1 text-indigo-500 hover:text-white hover:bg-indigo-500 transition-colors duration-300">
+                            Get Started</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
