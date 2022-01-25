@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    html{
+        scroll-behavior:smooth;
+    }
+    h1,svg{
+        @apply text-white;
+    }
+    button{
+        @apply focus:outline-none
+    }
+    .text-swiper-h1{
+        @apply w-full text-3xl sm:text-6xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-br from-white to-blue-500;
+    }
+    .custom .swiper-slide{
+        @apply flex justify-center items-start flex-col h-full
+    }
+    .custom .swiper-slide-active{
+        @apply justify-start 
+    }
+    .swiper-slide img{
+        @apply h-80 transition-all duration-500
+    }
+    .swiper-slide-active img{
+        @apply h-96 transition-all duration-500
+    }
+}
