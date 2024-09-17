@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Responsive timeline</title>
+    <script src="./js/tailwindcss.js"></script>
+    <script defer
+        src="./js/alpine.min.js"></script>
+</head>
+
+<body class="w-full h-screen flex flex-col items-center justify-center">
+    <div x-data="timeline">
+        <template x-for="(status,index) in data"
+            :key="status.id">
+            <div class="relative pl-10">
+
+
+
+
+                <div x-data="trackpoints(status.progress,index * 500)"
+                    class="absolute top-1 left-0 flex flex-col h-full">
+                    <template x-if="progress > 0 && progress < 100">
+                        <div
+                            class="absolute z-10 animate-ping w-4 h-4 bg-green-500 rounded-full flex-shrink-0 border-2 border-white shadow-md">
+                        </div>
+                    </template>
+
+                    <div class="relative z-10 w-4 h-4  rounded-full flex-shrink-0 border-2 border-white shadow-md"
+                        x-bind:class="[ 
+                        progress == 0 ? 'bg-gray-200' :'bg-green-500',
+                         ]"></div>
+
+                    <div class="absolute w-1 h-full bg-gray-200 ml-1.5"
+                        :style="{
+                            height: index == data.length - 1 ? '0' : '100%' 
+                            }"></div>
+                    <div class="absolute w-1 h-full bg-green-500 ml-1.5 transition-all duration-500"
+                        :style="{
+                            height: progress + '%'
+                        }"></div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <p>
+                    <span class="text-gray-800 font-semibold"
+                        x-text="status.title">
+                    </span>
+                    <span class="text-gray-600"
+                        x-text="status.created_at"></span>
+                </p>
+
+                <ul class="mt-2 space-y-2 pb-2">
+                    <template x-for="trackpoint in status.trackpoints"
+                        :key="trackpoint.id">
+                        <li class="text-sm">
+                            <p class="font-semibold text-gray-700"
+                                x-text="trackpoint.message"></p>
+                            <p class="font-medium text-gray-600"
+                                x-text="trackpoint.created_at"></p>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
